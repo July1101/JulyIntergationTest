@@ -1,0 +1,31 @@
+
+
+integration:
+  datasource:
+    enabled: true
+    properties:
+      - name: db1
+        primary: true
+        url: jdbc:mysql://127.0.0.1:3306/test1?serverTimezone=UTC
+        username: root
+        password: 123456
+      - name: db2
+        url: jdbc:mysql://127.0.0.1:3306/test2?serverTimezone=UTC
+        username: root
+        password: 123456
+  template:
+    mysql: /template/mysql
+
+
+mybatis:
+  type-aliases-package: com.thg.component.mysql.dao
+
+
+
+spring:
+  redis:
+    sentinel:
+      username: default
+      password: 123456
+    host: 127.0.0.1
+    port: 6379

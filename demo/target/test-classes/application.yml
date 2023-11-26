@@ -1,0 +1,43 @@
+
+
+
+spring:
+  application:
+    name: my-demo
+  redis:
+    database: 0
+    host: localhost
+    password: 123456
+    port: 6379
+    timeout: 5000
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+#  redis:
+#    sentinel:
+#      username: default
+#      password: 123456
+#      master: my-master
+#    host: localhost
+#    port: 6379
+#    client-type: jedis
+#    database: 0
+#    jedis:
+#      pool:
+#        enabled: true
+
+mysql:
+  datasource:
+    enabled: true
+    properties:
+      - name: db1
+        primary: true
+        url: jdbc:mysql://127.0.0.1:3306/test1?serverTimezone=UTC
+        username: root
+        password: 123456
+      - name: db2
+        url: jdbc:mysql://127.0.0.1:3306/test2?serverTimezone=UTC
+        username: root
+        password: 123456

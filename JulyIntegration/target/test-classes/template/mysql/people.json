@@ -1,0 +1,10 @@
+[
+  {
+    "table": "people",
+    "fields": {
+      "age": 23,
+      "weight": 50
+    }
+  }
+
+]

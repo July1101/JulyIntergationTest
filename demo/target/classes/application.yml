@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: "thg-mysql"
+
+
+server:
+  port: 8010
+
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
+
+mysql:
+  datasource:
+    enabled: true
+    properties:
+      - name: db1
+        primary: true
+        url: jdbc:mysql://127.0.0.1:3306/test1?serverTimezone=UTC
+        username: root
+        password: 123456
+      - name: db2
+        url: jdbc:mysql://127.0.0.1:3306/test2?serverTimezone=UTC
+        username: root
+        password: 123456

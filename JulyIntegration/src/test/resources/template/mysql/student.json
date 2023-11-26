@@ -1,0 +1,10 @@
+[
+  {
+    "dsName": "db1",
+    "table": "student",
+    "fields": {
+      "age": 23
+    }
+  }
+
+]

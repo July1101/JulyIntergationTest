@@ -1,0 +1,50 @@
+integration:
+  datasource:
+    enable: true
+    templatePath: /template/mysql
+    properties:
+      db3:
+        url: jdbc:mysql://127.0.0.1:3306/test1?serverTimezone=UTC
+        username: root
+        password: 123456
+      db4:
+        url: jdbc:mysql://127.0.0.1:3306/test2?serverTimezone=UTC
+        username: root
+        password: 123456
+  redis:
+    enable: true
+    properties:
+      - name: default
+        host: 127.0.0.1
+        port: 6379
+        username: default
+        password: 123456
+
+
+
+
+#          jdbc:
+#            SimpleDataSource: DEBUG
+#            ScriptRunner: DEBUG
+#        sqlmap:
+#          engine:
+#            impl:
+#              SqlMapClientDelegate: DEBUG
+
+
+mysql:
+  datasource:
+    enabled: true
+    properties:
+      - name: db1
+        primary: true
+        url: jdbc:mysql://127.0.0.1:3306/test1?serverTimezone=UTC
+        username: root
+        password: 123456
+      - name: db2
+        url: jdbc:mysql://127.0.0.1:3306/test2?serverTimezone=UTC
+        username: root
+        password: 123456
+
+
+

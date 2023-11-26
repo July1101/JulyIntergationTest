@@ -1,0 +1,51 @@
+@startuml
+
+
+participant 计费系统 as HH
+participant "账务系统(后付费系统)" as H1
+participant 抵扣系统 as H2
+participant 消耗查询服务 as H3
+participant 优惠券系统 as H5
+participant 收银台 as H4
+
+
+
+
+HH->H1: 到达额度通知出账
+
+activate H1
+H1->H1: 账单拆单
+H1->H2: 抵扣登记
+activate H2
+H2->H2: 抵扣信息落库
+H2-->H1: 抵扣登记完成
+
+deactivate H1
+deactivate H2
+
+
+
+H2-->H2:等待
+
+activate H2
+
+H2->H5: 查询券信息(这一过程目前使用离线实现)
+activate H5
+H5-->H2: 返回券信息
+deactivate H5
+
+H2->H3: 实时消耗和预抵消耗查询
+activate H3
+H3-->H2: 返回消耗信息
+deactivate H3
+H2->H2: 计算抵扣金额
+
+H2->H1: 抵扣完成
+deactivate H2
+activate H1
+H1->H1: 继续出账
+H1->H4: 通知收银台支付账单
+
+deactivate HH
+
+@enduml

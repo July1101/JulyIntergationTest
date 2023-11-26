@@ -1,0 +1,21 @@
+@startuml
+start
+:初始化 workId、dataCenterId、nonce和lastTimestamp;
+repeat
+    :获取当前时间戳 timestamp;
+    if (timestamp < lastTimestamp) then (时间回退)
+        :抛出异常 "Snowflake timestamp moved backwards";
+    endif
+    if (timestamp == lastTimestamp) then (同一时间戳)
+        :递增 nonce;
+        if (nonce 用尽) then (Nonce用尽)
+            :阻塞到下一秒;
+            :获取新的时间戳 timestamp;
+        endif
+    else (不同时间戳)
+        :重置 nonce;
+    endif
+    :更新 lastTimestamp 为 timestamp;
+    :返回生成的ID;
+repeat while (true)
+@enduml

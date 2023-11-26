@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>个人信息</title>
+  <!-- 其他样式和内容 -->
+</head>
+<html>
+<head>
+  <title>个人信息</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .basic-info {
+      background-color: #f1f1f1;
+      text-align: center;
+    }
+    textarea {
+      width: 98%;
+      height: 100px;
+      resize: vertical; /* 可垂直调整大小 */
+      padding: 5px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .mytest{
+      width: 98%;
+      height: 500px;
+      resize: vertical; /* 可垂直调整大小 */
+      padding: 5px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+  </style>
+</head>
+<body>
+<table>
+  <tbody>
+  <tr>
+    <td rowspan="2"  width="12.5%" class="basic-info">耗时信息</td>
+    <th width="12.5%" >数据预清理</th>
+    <th width="12.5%">依赖模拟</th>
+    <th width="12.5%">数据初始化</th>
+    <th width="12.5%">测试执行</th>
+    <th width="12.5%">数据校验</th>
+    <th width="12.5%">数据后清理</th>
+    <th width="12.5%">总耗时</th>
+  </tr>
+  <tr>
+    <td>8ms</td>
+    <td>2ms</td>
+    <td>14ms</td>
+    <td>67ms</td>
+    <td>10ms</td>
+    <td>5ms</td>
+    <td>106ms</td>
+  </tr>
+  </tbody>
+</table>
+<table>
+  <tbody>
+  <tr>
+    <td rowspan="6" width="12.5%" class="basic-info">Mysql监控信息</td>
+    <th width="12.5%">执行阶段</th>
+    <th width=32.5%">Sql语句</th>
+    <th width=32.5%">返回结果</th>
+    <th width=12.5%">耗时</th>
+  </tr>
+  <tr>
+    <td>数据预清理</td>
+    <td>delete from student where student_id = 123</td>
+    <td>0</td>
+    <td>5ms</td>
+  </tr>
+  <tr>
+    <td>数据初始化</td>
+    <td>insert into student (student_id,name,age,school) value (123,"tanhuigen",25,"ustc") where student_id = 123 </td>
+    <td>1</td>
+    <td>5ms</td>
+  </tr>
+  <tr>
+    <td>测试执行</td>
+    <td>update student set age = 25 where student_id = 123</td>
+    <td>1</td>
+    <td>12ms</td>
+  </tr>
+  <tr>
+    <td>数据校验</td>
+    <td>select * from student where student_id = 123</td>
+    <td>{"id":12,"student_id":123,"name":"tanhuigen","age":18,"school":"ustc"}</td>
+    <td>5ms</td>
+  </tr>
+  <tr>
+    <td>数据后清理</td>
+    <td>delete from student where student_id = 123</td>
+    <td>1</td>
+    <td>4ms</td>
+  </tr>
+  </tbody>
+</table>
+
+
+<table>
+  <tbody>
+  <tr>
+    <td rowspan="6" width="12.5%" class="basic-info">Redis监控信息</td>
+    <th width="12.5%">执行阶段</th>
+    <th>数据类型</th>
+    <th>执行方法</th>
+    <th>方法参数</th>
+    <th>返回结果</th>
+    <th width="10%">耗时</th>
+  </tr>
+  <tr>
+    <td>数据预清理</td>
+    <td>string</td>
+    <td>del</td>
+    <td>{"key":"student"}</td>
+    <td>1</td>
+    <td>1ms</td>
+  </tr>
+  <tr>
+    <td>数据后清理</td>
+    <td>string</td>
+    <td>del</td>
+    <td>{"key":"student"}</td>
+    <td>0</td>
+    <td>1ms</td>
+  </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+  <tr>
+    <td rowspan="6" width="12.5%" class="basic-info">消息队列监控信息</td>
+    <th width="40%">预期数据</th>
+    <th>实际数据</th>
+  </tr>
+  <tr>
+    <td>
+      <textarea name="log1"></textarea>
+    </td>
+    <td>
+      <textarea name="log1"></textarea>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+  <tr>
+    <td rowspan="6" width="12.5%" class="basic-info">日志信息</td>
+  </tr>
+  <tr>
+    <td>
+      <textarea class = "mytest">23:37:49.019 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@53045c6c testClass = MyTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@5149d738 testClass = MyTest, locations = '{}', classes = '{class com.thg.IntegrationApplication, class com.thg.test.demo.DemoApplication}', contextInitializerClasses = '[]', activeProfiles = '{dev_test}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[[ImportsContextCustomizer@6bbe85a8 key = [@org.springframework.stereotype.Indexed(), @org.springframework.stereotype.Component(value=), @org.springframework.test.context.ActiveProfiles(profiles=[], resolver=interface org.springframework.test.context.ActiveProfilesResolver, value=[dev_test], inheritProfiles=true), @org.springframework.boot.test.context.SpringBootTest(args=[], webEnvironment=MOCK, value=[], properties=[], classes=[class com.thg.IntegrationApplication, class com.thg.test.demo.DemoApplication]), @org.springframework.context.annotation.Import(value=[class com.thg.mock.config.JulyMockScannerRegistrar]), @org.springframework.test.context.TestExecutionListeners(inheritListeners=true, listeners=[], mergeMode=REPLACE_DEFAULTS, value=[class org.springframework.test.context.web.ServletTestExecutionListener, class org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, class org.springframework.test.context.event.ApplicationEventsTestExecutionListener, class org.springframework.test.context.support.DependencyInjectionTestExecutionListener, class org.springframework.test.context.support.DirtiesContextTestExecutionListener, class org.springframework.test.context.event.EventPublishingTestExecutionListener]), @com.thg.mock.model.JulyMockScan(basePackageClasses=[class com.thg.integrationtesting.mock.MyMock]), @org.springframework.test.context.BootstrapWith(value=class org.springframework.boot.test.context.SpringBootTestContextBootstrapper)]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@15eb5ee5, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@31c88ec8, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@479d31f3, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@f5ac9e4, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@661972b0, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@3a079870], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.3)
+
+2023-08-07 23:37:49.666  INFO 67964 --- [           main] com.thg.integrationtesting.cases.MyTest  : Starting MyTest using Java 1.8.0_361 on YFR61QKM6C with PID 67964 (/Users/bytedance/Documents/thg/common/integration-testing/target/classes started by bytedance in /Users/bytedance/Documents/thg/common/integration-testing)
+2023-08-07 23:37:49.668  INFO 67964 --- [           main] com.thg.integrationtesting.cases.MyTest  : The following 1 profile is active: "dev_test"
+2023-08-07 23:37:51.158  INFO 67964 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-08-07 23:37:51.161  INFO 67964 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-08-07 23:37:51.234  INFO 67964 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 0 Redis repository interfaces.
+2023-08-07 23:37:53.554  INFO 67964 --- [           main] c.t.d.c.DataSourceAutoConfiguration1     : mysql.datasource begin initialize
+2023-08-07 23:37:53.583  INFO 67964 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-07 23:37:54.350  INFO 67964 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-07 23:37:54.351  INFO 67964 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-08-07 23:37:54.420  INFO 67964 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-08-07 23:37:55.355  INFO 67964 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-08-07 23:37:55.415  INFO 67964 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-08-07 23:37:55.449  INFO 67964 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2023-08-07 23:37:55.503  INFO 67964 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2023-08-07 23:37:56.520  INFO 67964 --- [           main] com.thg.redis.config.RedisConfigFactory  : redisConfigFactory is build complete.
+2023-08-07 23:37:58.317  WARN 67964 --- [           main] o.a.r.s.a.RocketMQAutoConfiguration      : The necessary spring property 'rocketmq.name-server' is not defined, all rockertmq beans creation are skipped!
+2023-08-07 23:37:59.424  INFO 67964 --- [           main] com.thg.integrationtesting.cases.MyTest  : Started MyTest in 10.368 seconds (JVM running for 12.015)
+2023-08-07 23:37:59.562  INFO 67964 --- [           main] com.thg.core.action.TestBase             : the case of [CID:1759519286626369600]test-1 test start
+==>  Preparing: delete from student where ( student_id = ? )
+==> Parameters: 4967761307654158261(String)
+<==    Updates: 0
+==>  Preparing: delete from student where ( student_id = ? )
+==> Parameters: 123(Integer)
+<==    Updates: 0
+entry mock
+hello = hello1
+world = [1]
+map = {1=tanhuigen, 2=lizehao}
+==>  Preparing: insert into student ( student_id , name , age ) values ( ? , ? , ? )
+==> Parameters: 4967761307654158261(String), test(String), 1998(Integer)
+<==    Updates: 1
+==>  Preparing: update student set name=?,age=? where student_id=?
+==> Parameters: tanhuigen(String), 18(Integer), 4967761307654158261(Long)
+<==    Updates: 1
+==>  Preparing: insert into student (student_id,name,age) values (?,?,?)
+==> Parameters: 123(Long), 123(String), 18(Integer)
+<==    Updates: 1
+newDAO.getName() = this is mock say
+Mockito.mockingDetails(newDAO).getInvocations() = [newDAO.getName();]
+==>  Preparing: select * from student where ( student_id = ? )
+==> Parameters: 4967761307654158261(String)
+<==      Total: 1
+==>  Preparing: select * from student where ( student_id = ? )
+==> Parameters: 123(Integer)
+<==      Total: 1
+==>  Preparing: delete from student where ( student_id = ? )
+==> Parameters: 4967761307654158261(String)
+<==    Updates: 1
+==>  Preparing: delete from student where ( student_id = ? )
+==> Parameters: 123(Integer)
+<==    Updates: 1
+caseId = 1759519286626369600
+k = newDAO
+v = TestMock(mockId=newDAO, bean=com.thg.integrationtesting.mock.MyMock@98712fa, mockMethod=public void com.thg.integrationtesting.mock.MyMock.mockNewDAO(java.lang.String,java.util.List,java.util.Map), unMockMethod=public void com.thg.integrationtesting.mock.MyMock.unMockNewDAO(), mockMethodParamsSize=3)
+reportInfo = JulyReportInfo(caseId=1759519286626369600, caseName=null, className=null, startTime=2023-08-07T23:37:59.572, endTime=2023-08-07T23:38:00.128, methodName=null, description=[CID:1759519286626369600]test-1, status=null, totalCostTime=null, mysqlTestReport=MysqlTestReport(sqlOperationList=[SqlOperation(pace=PRE_CLEAR, sql=delete from student where ( student_id = '4967761307654158261' ), res=0, costTime=116), SqlOperation(pace=PRE_CLEAR, sql=delete from student where ( student_id = 123 ), res=0, costTime=7), SqlOperation(pace=INIT, sql=insert into student ( student_id , name , age ) values ( '4967761307654158261' , 'test' , 1998 ), res=1, costTime=11), SqlOperation(pace=ACTION, sql=update student set name='tanhuigen',age=18 where student_id=4967761307654158261, res=1, costTime=17), SqlOperation(pace=ACTION, sql=insert into student (student_id,name,age) values (123,'123',18), res=1, costTime=9), SqlOperation(pace=CHECK, sql=select * from student where ( student_id = '4967761307654158261' ), res=[{"name":"tanhuigen","student_id":4967761307654158261,"id":446,"age":18}], costTime=51), SqlOperation(pace=CHECK, sql=select * from student where ( student_id = 123 ), res=[{"name":"123","student_id":123,"id":245,"age":18}], costTime=10), SqlOperation(pace=AFTER_CLEAR, sql=delete from student where ( student_id = '4967761307654158261' ), res=1, costTime=14), SqlOperation(pace=AFTER_CLEAR, sql=delete from student where ( student_id = 123 ), res=1, costTime=6)], checkTableResultList=[]), costTimeDetail={PRE_CLEAR=296, CHECK=95, ACTION=38, INIT=84, AFTER_CLEAR=42}, mockRecords=[MockRecord(location=-> at com.thg.integrationtesting.cases.MyTest.doAction(MyTest.java:53), method=newDAO.getName();, returnValue="this is mock say", isStubbing=true)], redisReports=[RedisReport(casePace=PRE_CLEAR, redisDataType=DEFAULT, methodName=delete, args=["testKey"], returnVal=false, timeCost=87), RedisReport(casePace=PRE_CLEAR, redisDataType=DEFAULT, methodName=delete, args=["testKey"], returnVal=false, timeCost=2), RedisReport(casePace=INIT, redisDataType=STRING, methodName=set, args=["testKey","1439319629256754161"], returnVal=null, timeCost=48), RedisReport(casePace=CHECK, redisDataType=STRING, methodName=get, args=["testKey"], returnVal="1439319629256754161", timeCost=8), RedisReport(casePace=AFTER_CLEAR, redisDataType=DEFAULT, methodName=delete, args=["testKey"], returnVal=true, timeCost=1), RedisReport(casePace=AFTER_CLEAR, redisDataType=DEFAULT, methodName=delete, args=["testKey"], returnVal=false, timeCost=1)])
+reportInfo = JulyReportInfo(caseId=1759519286626369600, caseName=null, className=null, startTime=2023-08-07T23:37:59.572, endTime=2023-08-07T23:38:00.128, methodName=null, description=[CID:1759519286626369600]test-1, status=null, totalCostTime=null, mysqlTestReport=MysqlTestReport(sqlOperationList=[SqlOperation(pace=PRE_CLEAR, sql=delete from student where ( student_id = '4967761307654158261' ), res=0, costTime=116), SqlOperation(pace=PRE_CLEAR, sql=delete from student where ( student_id = 123 ), res=0, costTime=7), SqlOperation(pace=INIT, sql=insert into student ( student_id , name , age ) values ( '4967761307654158261' , 'test' , 1998 ), res=1, costTime=11), SqlOperation(pace=ACTION, sql=update student set name='tanhuigen',age=18 where student_id=4967761307654158261, res=1, costTime=17), SqlOperation(pace=ACTION, sql=insert into student (student_id,name,age) values (123,'123',18), res=1, costTime=9), SqlOperation(pace=CHECK, sql=select * from student where ( student_id = '4967761307654158261' ), res=[{"name":"tanhuigen","student_id":4967761307654158261,"id":446,"age":18}], costTime=51), SqlOperation(pace=CHECK, sql=select * from student where ( student_id = 123 ), res=[{"name":"123","student_id":123,"id":245,"age":18}], costTime=10), SqlOperation(pace=AFTER_CLEAR, sql=delete from student where ( student_id = '4967761307654158261' ), res=1, costTime=14), SqlOperation(pace=AFTER_CLEAR, sql=delete from student where ( student_id = 123 ), res=1, costTime=6)], checkTableResultList=[]), costTimeDetail={PRE_CLEAR=296, CHECK=95, ACTION=38, INIT=84, AFTER_CLEAR=42}, mockRecords=[MockRecord(location=-> at com.thg.integrationtesting.cases.MyTest.doAction(MyTest.java:53), method=newDAO.getName();, returnValue="this is mock say", isStubbing=true)], redisReports=[RedisReport(casePace=PRE_CLEAR, redisDataType=DEFAULT, methodName=delete, args=["testKey"], returnVal=false, timeCost=87), RedisReport(casePace=PRE_CLEAR, redisDataType=DEFAULT, methodName=delete, args=["testKey"], returnVal=false, timeCost=2), RedisReport(casePace=INIT, redisDataType=STRING, methodName=set, args=["testKey","1439319629256754161"], returnVal=null, timeCost=48), RedisReport(casePace=CHECK, redisDataType=STRING, methodName=get, args=["testKey"], returnVal="1439319629256754161", timeCost=8), RedisReport(casePace=AFTER_CLEAR, redisDataType=DEFAULT, methodName=delete, args=["testKey"], returnVal=true, timeCost=1), RedisReport(casePace=AFTER_CLEAR, redisDataType=DEFAULT, methodName=delete, args=["testKey"], returnVal=false, timeCost=1)])
+
+===============================================
+Default Suite
+Total tests run: 1, Passes: 1, Failures: 0, Skips: 0
+===============================================</textarea>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

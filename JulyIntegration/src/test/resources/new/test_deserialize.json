@@ -1,0 +1,47 @@
+[
+  {
+    "name" : "[CID:1759519286626369600]test-1",
+    "random" : {
+      "id" : "Long"
+    },
+    "mysql" : {
+      "initDataSet" : [
+        {
+          "dsName" : "db1",
+          "table" : "student",
+          "fields" : {
+            "id" : 123,
+            "student_id": "$id",
+            "name" : "tanhuigen",
+            "age" : 18
+          },
+          "deleteKey" : {
+            "id" : 123
+          }
+        }
+      ],
+      "checkDataSet": [
+        {
+          "dsName" : "db1",
+          "table" : "student",
+          "fields" : {
+
+          },
+          "selectKey" : {
+            "id" : 123
+          }
+        }
+      ]
+    },
+    "list": [
+      {
+        "value": 1
+      },
+      {
+        "value": 2
+      }
+    ],
+    "info" : "tanhuigen",
+    "studentId" : "$id"
+  }
+]

@@ -1,0 +1,63 @@
+[
+  {
+    "caseId": "1759519286626369600",
+    "name" : "[CID:1759519286626369600]test-1",
+    "random" : {
+      "studentId" : "Long"
+    },
+    "mysql" : {
+      "initDataSet" : [
+        {
+          "dsName" : "db3",
+          "table" : "student",
+          "fields" : {
+            "student_id" : "$studentId",
+            "name" : "test",
+            "age": 1998
+          },
+          "deleteKey" : {
+            "student_id" : "$studentId"
+          }
+        },
+        {
+          "dsName" : "db4",
+          "table" : "student",
+          "fields" : {
+
+          },
+          "deleteKey" : {
+            "student_id" : 123
+          }
+        }
+      ],
+      "checkDataSet" : [
+        {
+          "dsName" : "db3",
+          "table" : "student",
+          "fields" : {
+            "student_id" : "$studentId",
+            "name" : "tanhuigen",
+            "age": 18
+          },
+          "selectKey" : {
+            "student_id" : "$studentId"
+          }
+        },
+        {
+          "dsName" : "db4",
+          "table" : "student",
+          "fields" : {
+            "student_id" : 123,
+            "name" : "123",
+            "age": 18
+          },
+          "selectKey" : {
+            "student_id" : 123
+          }
+        }
+      ]
+    },
+    "studentId": "$studentId",
+    "studentName": "tanhuigen"
+  }
+]
